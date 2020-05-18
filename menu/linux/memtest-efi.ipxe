@@ -1,0 +1,9 @@
+#!ipxe
+
+#  set server_ip 192.168.111.2
+#  set nfs_path /srv/tftpboot/images/linux/gparted
+chain http://192.168.1.4/pxe/images/misc/memtest/memtest.efi
+#  kernel nfs://${server_ip}${nfs_path}/live/vmlinuz || read void
+#  initrd nfs://${server_ip}${nfs_path}/live/initrd.img || read void
+#  imgargs vmlinuz initrd=initrd.img root=/dev/nfs boot=live netboot=nfs nfsroot=${server_ip}:${nfs_path} ip=dhcp config components union=overlay username=user $
+#  boot || read void

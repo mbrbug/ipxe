@@ -1,0 +1,9 @@
+#!ipxe
+#set server_ip 192.168.1.4
+set http_path images/winpe/win10pe_max
+kernel ${boot-url-http}/efi/libs/wimboot
+initrd ${boot-url-http}/${http_path}/bootmgr    bootmgr
+initrd ${boot-url-http}/${http_path}/bcd        bcd
+initrd ${boot-url-http}/${http_path}/boot.sdi   boot.sdi
+initrd ${boot-url-http}/${http_path}/boot.wim        boot.wim
+boot

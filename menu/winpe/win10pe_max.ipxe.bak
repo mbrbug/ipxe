@@ -1,0 +1,9 @@
+#!ipxe
+set server_ip 192.168.1.4
+set nfs_path /pxe/images/winpe/win10pe_max
+kernel http://192.168.1.4/pxe/efi/libs/wimboot
+initrd http://${server_ip}${nfs_path}/bootmgr    bootmgr
+initrd http://${server_ip}${nfs_path}/bcd        bcd
+initrd http://${server_ip}${nfs_path}/boot.sdi   boot.sdi
+initrd http://${server_ip}${nfs_path}/boot.wim        boot.wim
+boot

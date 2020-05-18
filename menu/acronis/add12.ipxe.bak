@@ -1,0 +1,9 @@
+#!ipxe
+
+  set server_ip 192.168.1.4
+  set nfs_path /pxe/images/acronis/add12
+  kernel http://${server_ip}${nfs_path}/dat2.dat initrd=dat3.dat initrd=dat4.dat force_modules=usbhid ramdisk_size=307200 vga=791 quiet
+  initrd http://${server_ip}${nfs_path}/dat3.dat
+  initrd http://${server_ip}${nfs_path}/dat4.dat
+#  imgargs vmlinuz.efi initrd=initrd.lz root=/dev/nfs boot=casper netboot=nfs nfsroot=${server_ip}:${nfs_path} ip=dhcp splash quiet -- || read void
+  boot

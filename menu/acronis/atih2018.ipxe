@@ -1,0 +1,9 @@
+#!ipxe
+
+  #set server_ip 192.168.1.4
+  set http_path images/acronis/atih2018
+  kernel ${boot-url-http}/${http_path}/dat10.dat initrd=dat11.dat initrd=dat12.dat force_modules=usbhid ramdisk_size=307200 vga=791 quiet
+  initrd ${boot-url-http}/${http_path}/dat11.dat
+  initrd ${boot-url-http}/${http_path}/dat12.dat
+#  imgargs vmlinuz.efi initrd=initrd.lz root=/dev/nfs boot=casper netboot=nfs nfsroot=${server_ip}:${http_path} ip=dhcp splash quiet -- || read void
+  boot

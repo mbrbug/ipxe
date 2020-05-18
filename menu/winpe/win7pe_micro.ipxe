@@ -1,0 +1,18 @@
+#!ipxe
+##set server_ip 192.168.1.4
+set http_path images/winpe/win7pe_micro
+#set boot-url-http ${boot-url-http}/images/${app_path}
+#kernel http://${server}/pxe/efi/libs/wimboot
+#initrd http://${server}${http_path}/bootmgr    bootmgr
+#initrd http://${server}${http_path}/bcd        bcd
+#initrd http://${server}${http_path}/boot.sdi   boot.sdi
+#initrd http://${server}${http_path}/boot.wim        boot.wim
+#boot
+
+kernel ${boot-url-http}/efi/libs/wimboot
+initrd ${boot-url-http}/${http_path}/bootmgr    bootmgr
+initrd ${boot-url-http}/${http_path}/bcd        bcd
+initrd ${boot-url-http}/${http_path}/boot.sdi   boot.sdi
+initrd ${boot-url-http}/${http_path}/boot.wim        boot.wim
+boot
+

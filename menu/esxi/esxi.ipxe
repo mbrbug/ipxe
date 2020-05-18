@@ -1,0 +1,14 @@
+#!ipxe
+
+#  set server_ip 192.168.111.2
+#  set nfs_path /srv/tftpboot/images/esxi/iso
+#kernel http://192.168.1.4/pxe/images/esxi/iso/efi/boot/bootx64.efi -c http://192.168.1.4/pxe/images/esxi/iso/boot.cfg || read void
+#kernel http://192.168.1.4/pxe/images/esxi/iso/efi/boot/bootx64.efi -c http://192.168.1.4/pxe/images/esxi/iso/boot.cfg
+kernel http://192.168.1.4/pxe/images/esxi/iso/mboot.c32 -c http://192.168.1.4/pxe/images/esxi/iso/boot.cfg
+#kernel tftp://192.168.1.4/images/esxi/iso/efi/boot/bootx64.efi -c tftp://192.168.1.4/images/esxi/iso/boot.cfg || read void
+#  initrd http://192.168.111.2/pxe/images/esxi/iso/BOOT.CFG || read void
+#  imgargs linux vga=791 initrd=initrd.gz --- || read void
+# imgargs linux priority=low vga=791 initrd=initrd.gz --- || read void
+# imgargs vmlinuz.efi initrd=initrd.lz root=/dev/nfs boot=casper netboot=nfs nfsroot=${server_ip}:${nfs_path} ip=dhcp splash quiet -- || read void
+#  boot || read void
+boot
