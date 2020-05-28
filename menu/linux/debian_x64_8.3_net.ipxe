@@ -1,9 +1,9 @@
 #!ipxe
 
-  set server_ip 192.168.1.4
-  set nfs_path /srv/tftpboot/images/linux/debian/8.3_x64_net
-  kernel nfs://${server_ip}${nfs_path}/linux || read void
-  initrd nfs://${server_ip}${nfs_path}/initrd.gz || read void
+#  set server_ip 192.168.1.4
+  set app_path linux/debian/8.3_x64_net
+  kernel ${http-images}/${app_path}/linux || read void
+  initrd ${http-images}/${app_path}/initrd.gz || read void
   imgargs linux vga=791 initrd=initrd.gz --- || read void
 # imgargs linux priority=low vga=791 initrd=initrd.gz --- || read void
 # imgargs vmlinuz.efi initrd=initrd.lz root=/dev/nfs boot=casper netboot=nfs nfsroot=${server_ip}:${nfs_path} ip=dhcp splash quiet -- || read void

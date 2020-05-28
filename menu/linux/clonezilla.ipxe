@@ -1,11 +1,11 @@
 #!ipxe
   
-  set server_ip 192.168.1.4
-  set nfs_path /srv/tftpboot/images/linux/clonezilla
-  kernel nfs://${server_ip}${nfs_path}/live/vmlinuz || read void
-  initrd nfs://${server_ip}${nfs_path}/live/initrd.img || read void
+#  set server_ip 192.168.1.4
+  set app_path linux/clonezilla
+  kernel ${http-images}/${app_path}/live/vmlinuz || read void
+  initrd ${http-images}/${app_path}/live/initrd.img || read void
 #  imgargs vmlinuz initrd=initrd.img root=/dev/nfs boot=live netboot=nfs nfsroot=${server_ip}:${nfs_path} ip=dhcp splash quiet -- || read void
 #imgargs vmlinuz initrd=initrd.img root=/dev/nfs boot=live netboot=nfs nfsroot=${server_ip}:${nfs_path} ip=dhcp username=user hostname=trusty config quiet union=overlayfs noswap edd=on nomodeset noeject locales= keyboard-layouts= ocs_live_run="ocs-live-general" ocs_live_extra_param="" ocs_live_batch=no nomodeset vga=normal nosplash || read void
 #imgargs vmlinuz initrd=initrd.img root=/dev/nfs boot=live ip=dhcp username=user hostname=trusty config quiet union=overlayfs noswap edd=on nomodeset noeject locales= keyboard-layouts= ocs_live_run="ocs-live-general" ocs_live_extra_param="" ocs_live_batch=no nomodeset vga=normal nosplash fetch=http://192.168.1.4/pxe/images/linux/clonezilla/live/filesystem.squashfs || read void
-imgargs vmlinuz initrd=initrd.img boot=live username=user union=overlay config components quiet noswap edd=on nomodeset nodmraid locales= keyboard-layouts= ocs_live_run="ocs-live-general" ocs_live_extra_param="" ocs_live_batch=no net.ifnames=0 nosplash noprompt fetch=http://192.168.1.4/pxe/images/linux/clonezilla/live/filesystem.squashfs || read void
+imgargs vmlinuz initrd=initrd.img boot=live username=user union=overlay config components quiet noswap edd=on nomodeset nodmraid locales= keyboard-layouts= ocs_live_run="ocs-live-general" ocs_live_extra_param="" ocs_live_batch=no net.ifnames=0 nosplash noprompt fetch=${http-images}/${app_path}/live/filesystem.squashfs || read void
   boot || read void

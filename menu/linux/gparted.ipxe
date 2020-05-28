@@ -1,8 +1,8 @@
 #!ipxe
   
   #set server_ip 192.168.1.4
-  set nfs_path linux/gparted
-  kernel ${boot-url-nfs}/${nfs_path}/live/vmlinuz || read void
-  initrd ${boot-url-nfs}/${nfs_path}/live/initrd.img || read void
-  imgargs vmlinuz initrd=initrd.img root=/dev/nfs boot=live netboot=nfs nfsroot=${server}:/${nfs-root}/${nfs_path} ip=dhcp config components union=overlay username=user noswap noeject vga=791 || read void
+  set app_path /linux/gparted
+  kernel ${http-images}/${app_path}/live/vmlinuz || read void
+  initrd ${http-images}/${app_path}/live/initrd.img || read void
+  imgargs vmlinuz initrd=initrd.img root=/dev/nfs boot=live netboot=nfs nfsroot=${server}:/${nfs-root}/${app_path} ip=dhcp config components union=overlay username=user noswap noeject vga=791 || read void
   boot || read void

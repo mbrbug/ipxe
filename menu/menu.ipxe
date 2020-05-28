@@ -99,7 +99,7 @@ chain ${boot-url-http}/images/misc/memtest/memtest.0
 goto start
 
 :esxi
-chain http://192.168.1.4/pxe/menu/esxi/esxi.ipxe
+chain ${menu-url-http}/esxi/esxi.ipxe
 goto start
 
 ############ MAIN MENU ITEMS ############
@@ -159,19 +159,19 @@ choose selected && goto ${selected} || goto start
 choose --timeout ${submenu-timeout} --default ${submenu-default} selected && goto ${selected} || goto start
 
 :atih2018
-chain http://192.168.1.4/pxe/menu/acronis/atih2018.ipxe
+chain ${menu-url-http}/acronis/atih2018.ipxe
 goto start
 
 :atih2016
-chain http://192.168.1.4/pxe/menu/acronis/atih2016.ipxe
+chain ${menu-url-http}/acronis/atih2016.ipxe
 goto start
 
 :add12
-chain http://192.168.1.4/pxe/menu/acronis/add12.ipxe
+chain ${menu-url-http}/acronis/add12.ipxe
 goto start
 
 :aut11.5
-chain http://192.168.1.4/pxe/menu/acronis/aur11.5.ipxe
+chain ${menu-url-http}/acronis/aur11.5.ipxe
 goto start
 
 ###################### WINDOWS PE MENU ################################
@@ -189,7 +189,7 @@ choose selected && goto ${selected} || goto start
 choose --timeout ${submenu-timeout} --default ${submenu-default} selected && goto ${selected} || goto start
 
 :winpe
-chain http://192.168.1.4/pxe/menu/winpe/win10pe_max.ipxe
+chain ${menu-url-http}/winpe/win10pe_max.ipxe
 goto start
 
 :win7pe_micro
@@ -208,6 +208,7 @@ item ubuntu_x64_16.04LTS_net_yandex_expert Ubuntu x64 16.04 LTS Server Yandex Ex
 item ubuntu_x64_18.04LTS_net_yandex Ubuntu x64 18.04 LTS Server Yandex Boot
 item ubuntu_x64_18.04LTS_net_yandex_expert Ubuntu x64 18.04 LTS Server Yandex Expert Boot
 item ubuntu_x64_19_net Ubuntu x64 19 LTS Server Boot
+item ubuntu_x64_20_net Ubuntu x64 20 LTS Server Boot
 item ubuntu_x64_16.04.1_server Ubuntu x64 16.04.1 LTS Server
 item xubuntu_x64_16.04_live_desktop xUbuntu 16.04 Desktop & Live
 item mint_18.1 mint 18.1
@@ -222,55 +223,59 @@ choose selected && goto ${selected} || goto start
 choose --timeout ${submenu-timeout} --default ${submenu-default} selected && goto ${selected} || goto start
 
 :debian-8.3-net
-chain http://192.168.1.4/pxe/menu/linux/debian_x64_8.3_net.ipxe
+chain ${menu-url-http}/linux/debian_x64_8.3_net.ipxe
 goto start
 
 :debian-stable-net-yandex
-chain http://192.168.1.4/pxe/menu/linux/debian_x64_stable_yandex.ipxe
+chain ${menu-url-http}/linux/debian_x64_stable_yandex.ipxe
 goto start
 
 :debian-stable-net-yandex-expert
-chain http://192.168.1.4/pxe/menu/linux/debian_x64_stable_yandex_expert.ipxe
+chain ${menu-url-http}/linux/debian_x64_stable_yandex_expert.ipxe
 goto start
 
 :ubuntu_x64_16.04LTS_net_yandex
-chain http://192.168.1.4/pxe/menu/linux/ubuntu_x64_16.04LTS_net_yandex.ipxe
+chain ${menu-url-http}/linux/ubuntu_x64_16.04LTS_net_yandex.ipxe
 goto start
 
 :ubuntu_x64_16.04LTS_net_yandex_expert
-chain http://192.168.1.4/pxe/menu/linux/ubuntu_x64_16.04LTS_net_yandex_expert.ipxe
+chain ${menu-url-http}/linux/ubuntu_x64_16.04LTS_net_yandex_expert.ipxe
 goto start
 
 :ubuntu_x64_18.04LTS_net_yandex
-chain http://192.168.1.4/pxe/menu/linux/ubuntu_x64_18.04LTS_net_yandex.ipxe
+chain ${menu-url-http}/linux/ubuntu_x64_18.04LTS_net_yandex.ipxe
 goto start
 
 :ubuntu_x64_18.04LTS_net_yandex_expert
-chain http://192.168.1.4/pxe/menu/linux/ubuntu_x64_18.04LTS_net_yandex_expert.ipxe
+chain ${menu-url-http}/linux/ubuntu_x64_18.04LTS_net_yandex_expert.ipxe
 goto start
 
 :ubuntu_x64_19_net
-chain http://192.168.1.4/pxe/menu/linux/ubuntu_x64_19_net.ipxe
+chain ${menu-url-http}/linux/ubuntu_x64_19_net.ipxe
+goto start
+
+:ubuntu_x64_20_net
+chain ${menu-url-http}/linux/ubuntu_x64_20LTS_net.ipxe
 goto start
 
 :xubuntu_x64_16.04_live_desktop
-chain http://192.168.1.4/pxe/menu/linux/xubuntu_x64_16.04_live_desktop.ipxe
+chain ${menu-url-http}/linux/xubuntu_x64_16.04_live_desktop.ipxe
 goto start
 
 :mint_18.1
-chain http://192.168.1.4/pxe/menu/linux/mint_18.1.ipxe
+chain ${menu-url-http}/linux/mint_18.1.ipxe
 goto start
 
 :clonezilla
-chain http://192.168.1.4/pxe/menu/linux/clonezilla.ipxe
+chain ${menu-url-http}/linux/clonezilla.ipxe
 goto start
 
 :gparted
-chain ${boot-url-http}/menu/linux/gparted.ipxe
+chain ${menu-url-http}/linux/gparted.ipxe
 goto start
 
 :ubuntu_x64_16.04.1_server
-chain http://192.168.1.4/pxe/menu/linux/ubuntu_x64_16.04.1_server.ipxe
+chain ${menu-url-http}/linux/ubuntu_x64_16.04.1_server.ipxe
 goto start
 
 ###################### RECOVERY MENU ################################

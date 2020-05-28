@@ -1,8 +1,9 @@
 #!ipxe
   
-  set server_ip 192.168.1.4
-  set nfs_path /srv/tftpboot/images/linux/mint/18.1_x86
-  kernel nfs://${server_ip}${nfs_path}/casper/vmlinuz || read void
-  initrd nfs://${server_ip}${nfs_path}/casper/initrd.lz || read void
-  imgargs vmlinuz initrd=initrd.lz root=/dev/nfs boot=casper netboot=nfs nfsroot=${server_ip}:${nfs_path} ip=dhcp splash quiet -- || read void
+ # set server_ip 192.168.1.4
+  
+  set app_path linux/mint/18.1_x86
+  kernel ${http-images}/${app_path}/casper/vmlinuz || read void
+  initrd ${http-images}/${app_path}/casper/initrd.lz || read void
+  imgargs vmlinuz initrd=initrd.lz root=/dev/nfs boot=casper netboot=nfs nfsroot=${server}:${boot-url-nfs}/${app_path} ip=dhcp splash quiet -- || read void
   boot || read void
