@@ -1,0 +1,9 @@
+#!ipxe
+
+  set server_ip archive.ubuntu.com
+  set nfs_path /ubuntu/dists/focal/main/installer-amd64/current/legacy-images/netboot/ubuntu-installer/amd64/
+  kernel http://${server_ip}${nfs_path}/linux || read void
+  initrd http://${server_ip}${nfs_path}/initrd.gz || read void
+  imgargs linux vga=791 initrd=initrd.gz --- || read void
+#  imgargs vmlinuz.efi initrd=initrd.lz root=/dev/nfs boot=casper netboot=nfs nfsroot=${server_ip}:${nfs_path} ip=dhcp splash quiet -- || read void
+  boot || read void
