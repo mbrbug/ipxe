@@ -9,8 +9,8 @@
 
 
 #  set server_ip 192.168.1.4
-  set nfs_path linux/ubuntu/xubuntu_x64_16.04_live
-  kernel ${boot-url-nfs}/${nfs_path}/casper/vmlinuz.efi || read void
-  initrd ${boot-url-nfs}/${nfs_path}/casper/initrd.lz || read void
-  imgargs vmlinuz.efi initrd=initrd.lz root=/dev/nfs boot=casper netboot=nfs nfsroot=${nfs_server}: ${boot-url-nfs}/${nfs_path} ip=dhcp splash quiet -- || read void
+  set app_path linux/ubuntu/xubuntu_x64_16.04_live
+  kernel ${http-images}/${app_path}/casper/vmlinuz.efi || read void
+  initrd ${http-images}/${app_path}/casper/initrd.lz || read void
+  imgargs vmlinuz.efi initrd=initrd.lz root=/dev/nfs boot=casper netboot=nfs nfsroot=${server}:/${nfs-root}/${app_path} ip=dhcp splash quiet -- || read void
   boot || read void
