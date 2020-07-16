@@ -1,0 +1,16 @@
+#!ipxe
+  
+#  set server_ip 192.168.1.4
+#  set nfs_path /srv/tftpboot/images/linux/ubuntu/xubuntu_x64_16.04_live
+#  kernel nfs://${server_ip}${nfs_path}/casper/vmlinuz.efi || read void
+#  initrd nfs://${server_ip}${nfs_path}/casper/initrd.lz || read void
+#  imgargs vmlinuz.efi initrd=initrd.lz root=/dev/nfs boot=casper netboot=nfs nfsroot=${server_ip}:${nfs_path} ip=dhcp splash quiet -- || read void
+#  boot || read void
+
+
+#  set server_ip 192.168.1.4
+  set nfs_path linux/thinstation
+  kernel ${boot-url-nfs}/${nfs_path}/vmlinuz || read void
+  initrd ${boot-url-nfs}/${nfs_path}/initrd || read void
+  imgargs vmlinuz initrd splash=off load_ramdisk=1 ramdisk_blocksize=4096 root=/dev/ram0 ramdisk_size=786432 LM=3 || read void
+  boot || read void
